@@ -740,7 +740,7 @@ ul.navbar-nav > li.active > a {
 }
 
 .header-two .logo img {
-  height: 30px;
+  height: 100px;
 }
 
 /* header right */
@@ -2462,7 +2462,7 @@ img.testimonial-thumb {
 /* Footer about us */
 .footer-logo {
   margin-bottom: 25px;
-  max-height: 35px;
+  max-height: 90px;
 }
 
 /* Footer social */
