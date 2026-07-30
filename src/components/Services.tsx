@@ -87,9 +87,9 @@ export default function Services() {
         <div className="grid lg:grid-cols-2 gap-12 mt-20 bg-neutral-50 rounded-[3rem] p-12 items-center">
            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
              <img 
-               src="https://images.unsplash.com/photo-1581094794329-c8112c4e5190?q=80&w=2070&auto=format&fit=crop" 
+               src="/Engenharia_digital.png" 
                alt="Engenharia Digital, inovação e processos industriais automatizados"
-               className="w-full h-full object-cover grayscale"
+               className="w-full h-full object-cover"
              />
              <div className="absolute inset-0 bg-primary-600/10 mix-blend-multiply"></div>
            </div>
