@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Calculator } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import QuickQuoteModal from './QuickQuoteModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +16,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-    const navLinks = [
+  const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Sobre', href: '#sobre-nos' },
     { name: 'Serviços', href: '#especialidades' },
     { name: 'Portfólio', href: '#projetos' },
+    { name: 'FAQ', href: '#faq' },
     { name: 'Contato', href: '#contato' },
   ];
 
@@ -31,7 +34,7 @@ export default function Navbar() {
           : 'bg-black border-neutral-900'
       }`}>
         <a href="#home" className="flex items-center gap-4 group">
-          <img src="/logo1.png" alt="OZM Engenharia Logo" className="h-20 md:h-24 w-auto transition-transform group-hover:scale-105" />
+          <img src="/logo1.webp" alt="OZM Engenharia Logo" className="h-20 md:h-24 w-auto transition-transform group-hover:scale-105" />
         </a>
 
         {/* Desktop Menu */}
@@ -45,12 +48,13 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a
-            href="#contato"
-            className="bg-primary-600 text-white px-7 py-3 rounded-full text-[16px] font-bold shadow-lg shadow-primary-600/20 hover:bg-primary-700 transition-all hover:-translate-y-0.5 active:scale-95"
+          <button
+            onClick={() => setIsQuoteModalOpen(true)}
+            className="bg-primary-600 text-white px-7 py-3 rounded-full text-[16px] font-bold shadow-lg shadow-primary-600/20 hover:bg-primary-700 transition-all hover:-translate-y-0.5 active:scale-95 flex items-center gap-2"
           >
+            <Calculator className="size-4" />
             ORÇAMENTO
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -84,17 +88,23 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contato"
-                className="bg-primary-600 text-white text-center py-4 rounded-xl font-bold mt-4 shadow-lg shadow-primary-600/20"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsQuoteModalOpen(true);
+                }}
+                className="bg-primary-600 text-white text-center py-4 rounded-xl font-bold mt-4 shadow-lg shadow-primary-600/20 flex items-center justify-center gap-2"
               >
+                <Calculator className="size-5" />
                 Solicitar Orçamento
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Quick Quote Modal */}
+      <QuickQuoteModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
     </header>
   );
 }

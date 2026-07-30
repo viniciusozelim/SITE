@@ -69,7 +69,7 @@ export default function Benefits() {
           >
              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl scale-90">
                <img 
-                 src="/Generate.png" 
+                 src="/Generate.webp" 
                  alt="Engenheiro da OZM Engenharia revisando projetos estruturais e plantas" 
                  className="w-full h-full object-cover"
                />

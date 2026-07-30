@@ -1,6 +1,10 @@
-import { ArrowUp, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUp, Linkedin, Instagram, Facebook, ShieldCheck } from 'lucide-react';
+import PrivacyModal from './PrivacyModal';
 
 export default function Footer() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -19,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="col-span-1 lg:col-span-1">
             <a href="#home" className="flex items-center gap-4 mb-8 group">
-              <img src="/logo1.png" alt="OZM Engenharia Logo" className="h-12 w-auto opacity-80 hover:opacity-100 transition-all" />
+              <img src="/logo1.webp" alt="OZM Engenharia Logo" className="h-12 w-auto opacity-80 hover:opacity-100 transition-all" />
             </a>
             <p className="leading-relaxed mb-8 text-neutral-500 font-medium italic">
               Excelência e inovação em projetos de engenharia civil, elétrica e automação industrial. Referência em qualidade técnica.
@@ -73,11 +77,18 @@ export default function Footer() {
           </div>
 
           <div className="bg-neutral-900/50 p-8 rounded-3xl border border-neutral-900">
-            <h4 className="font-bold text-sm uppercase tracking-[0.2em] text-white mb-6">Suporte</h4>
+            <h4 className="font-bold text-sm uppercase tracking-[0.2em] text-white mb-6">Suporte & LGPD</h4>
             <div className="space-y-4">
               <p className="text-xs font-bold text-neutral-500">Fale com um Engenheiro</p>
               <a href="mailto:eng.viniciusozelim@hotmail.com" className="block text-white font-bold hover:text-primary-500 transition-colors">eng.viniciusozelim@hotmail.com</a>
               <a href="https://wa.me/5518991450514?text=ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento" target="_blank" rel="noreferrer" className="block text-primary-500 font-display font-extrabold text-2xl">+55 (18) 99145-0514</a>
+              <button
+                onClick={() => setIsPrivacyOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white transition-colors pt-2 border-t border-neutral-800 w-full"
+              >
+                <ShieldCheck className="size-4 text-primary-500" />
+                Política de Privacidade (LGPD)
+              </button>
             </div>
           </div>
         </div>
@@ -87,20 +98,30 @@ export default function Footer() {
             © {currentYear} OZM Engenharia. Quality & Integrity.
           </div>
           
-          <div className="flex gap-10 text-[10px] font-black uppercase tracking-tighter text-neutral-600">
+          <div className="flex gap-8 text-[10px] font-black uppercase tracking-tighter text-neutral-600">
             <span className="hover:text-neutral-400 transition-colors cursor-pointer">Qualidade</span>
             <span className="hover:text-neutral-400 transition-colors cursor-pointer">Segurança</span>
             <span className="hover:text-neutral-400 transition-colors cursor-pointer">Sustentabilidade</span>
+            <button
+              onClick={() => setIsPrivacyOpen(true)}
+              className="hover:text-primary-500 transition-colors cursor-pointer"
+            >
+              Privacidade (LGPD)
+            </button>
           </div>
 
           <button 
             onClick={scrollToTop}
             className="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-primary-600 text-white transition-all group border border-neutral-800"
+            aria-label="Voltar ao topo"
           >
             <ArrowUp className="size-5 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>
+
+      {/* Privacy Policy Modal */}
+      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </footer>
   );
 }
