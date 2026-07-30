@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-serif: "Montserrat", sans-serif;
+
+  --color-primary-50: #fef9f1;
+  --color-primary-100: #fdf0dc;
+  --color-primary-200: #fbe0b9;
+  --color-primary-300: #f8c98a;
+  --color-primary-400: #f4ad59;
+  --color-primary-500: #f09632;
+  --color-primary-600: #ea9214;
+  --color-primary-700: #c1730f;
+  --color-primary-800: #98590c;
+  --color-primary-900: #7c4a0d;
+  --color-primary-950: #432402;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-neutral-900 bg-neutral-50;
+  }
+}
+
+.glass-nav {
+  @apply bg-white/80 backdrop-blur-md border-b border-neutral-200 sticky top-0 z-50;
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+.heading-xl {
+  @apply font-display text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight;
+}
+
+.heading-lg {
+  @apply font-display text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight;
+}
+
+@layer utilities {
+  @keyframes slow-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+  }
+  .animate-slow-zoom {
+    animation: slow-zoom 20s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-delayed {
+    animation: fade-in 1s ease-out 0.8s forwards;
+    opacity: 0;
+  }
+
+  .skew-bg {
+    @apply absolute right-0 top-0 w-1/2 h-full bg-neutral-200/50 skew-x-[-12deg] translate-x-20 overflow-hidden;
+  }
+}
