@@ -6,17 +6,24 @@ import PrivacyModal from './PrivacyModal';
 interface QuickQuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialService?: string;
 }
 
-export default function QuickQuoteModal({ isOpen, onClose }: QuickQuoteModalProps) {
+export default function QuickQuoteModal({ isOpen, onClose, initialService }: QuickQuoteModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    service: 'Projeto Elétrico NBR 5410',
+    service: initialService || 'Projeto Elétrico NBR 5410',
     city: '',
     details: ''
   });
+
+  React.useEffect(() => {
+    if (initialService) {
+      setFormData(prev => ({ ...prev, service: initialService }));
+    }
+  }, [initialService, isOpen]);
 
   const [acceptedLgpd, setAcceptedLgpd] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);

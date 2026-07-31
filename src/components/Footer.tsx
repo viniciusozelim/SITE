@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { ArrowUp, Linkedin, Instagram, Facebook, ShieldCheck } from 'lucide-react';
 import PrivacyModal from './PrivacyModal';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigateService?: (slug: string) => void;
+  onNavigateHome?: () => void;
+}
+
+export default function Footer({ onNavigateService, onNavigateHome }: FooterProps) {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   const scrollToTop = () => {
@@ -17,16 +22,42 @@ export default function Footer() {
     { Icon: Facebook, href: "https://facebook.com/ozmengenharia", label: "Facebook" }
   ];
 
+  const serviceLinks = [
+    { label: 'Engenharia Elétrica', slug: 'eletrica' },
+    { label: 'Automação Industrial', slug: 'automacao' },
+    { label: 'Engenharia Mecânica', slug: 'mecanica' },
+    { label: 'Engenharia Civil', slug: 'civil' },
+    { label: 'Soluções Sustentáveis', slug: 'sustentaveis' }
+  ];
+
+  const handleServiceClick = (e: React.MouseEvent, slug: string) => {
+    e.preventDefault();
+    if (onNavigateService) {
+      onNavigateService(slug);
+    } else {
+      window.location.hash = `#servicos/${slug}`;
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateHome) {
+      onNavigateHome();
+    } else {
+      window.location.hash = '#home';
+    }
+  };
+
   return (
     <footer className="bg-black text-neutral-400 pt-24 pb-12 border-t border-neutral-900">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="col-span-1 lg:col-span-1">
-            <a href="#home" className="flex items-center gap-4 mb-8 group">
+            <a href="#home" onClick={handleHomeClick} className="flex items-center gap-4 mb-8 group">
               <img src="/logo1.webp" alt="OZM Engenharia Logo" className="h-12 w-auto opacity-80 hover:opacity-100 transition-all" />
             </a>
             <p className="leading-relaxed mb-8 text-neutral-500 font-medium italic">
-              Excelência e inovação em projetos de engenharia civil, elétrica e automação industrial. Referência em qualidade técnica.
+              Excelência e inovação em projetos de engenharia civil, elétrica, mecânica e automação industrial. Referência em qualidade técnica.
             </p>
             <div className="flex gap-4">
               {socialLinks.map(({ Icon, href, label }, i) => (
@@ -48,14 +79,18 @@ export default function Footer() {
             <h4 className="font-bold text-sm uppercase tracking-[0.2em] text-white mb-10">Explorar</h4>
             <ul className="space-y-4 font-bold text-sm">
               {[
-                { label: 'Home', href: '#home' },
-                { label: 'Sobre', href: '#sobre-nos' },
-                { label: 'Instalações', href: '#especialidades' },
-                { label: 'Obras', href: '#projetos' },
-                { label: 'Contato', href: '#contato' }
+                { label: 'Home', href: '#home', action: handleHomeClick },
+                { label: 'Sobre', href: '#sobre-nos', action: null },
+                { label: 'Instalações', href: '#especialidades', action: null },
+                { label: 'Obras', href: '#projetos', action: null },
+                { label: 'Contato', href: '#contato', action: null }
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-primary-500 transition-colors">
+                  <a 
+                    href={item.href} 
+                    onClick={item.action ? item.action : undefined}
+                    className="hover:text-primary-500 transition-colors"
+                  >
                     {item.label}
                   </a>
                 </li>
@@ -64,12 +99,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-[0.2em] text-white mb-10">Especialidades</h4>
-            <ul className="space-y-4 font-bold text-sm">
-              {['Estrutural', 'Elétrica', 'Automação', 'Consultoria'].map((item) => (
-                <li key={item}>
-                  <a href="#especialidades" className="hover:text-primary-500 transition-colors">
-                    Engenharia {item}
+            <h4 className="font-bold text-sm uppercase tracking-[0.2em] text-white mb-10">Subpáginas de Serviços</h4>
+            <ul className="space-y-3 font-bold text-sm">
+              {serviceLinks.map((service) => (
+                <li key={service.slug}>
+                  <a 
+                    href={`#servicos/${service.slug}`}
+                    onClick={(e) => handleServiceClick(e, service.slug)}
+                    className="hover:text-primary-500 transition-colors text-xs font-semibold flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-600"></span>
+                    {service.label}
                   </a>
                 </li>
               ))}

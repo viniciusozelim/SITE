@@ -1,34 +1,51 @@
-import { Zap, Cpu, Settings, Building2, Leaf, Lightbulb, ArrowRight } from 'lucide-react';
+import { Zap, Cpu, Settings, Building2, Leaf, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
-export default function Services() {
+interface ServicesProps {
+  onSelectService?: (slug: string) => void;
+}
+
+export default function Services({ onSelectService }: ServicesProps) {
   const services = [
     {
+      slug: "eletrica",
       icon: Zap,
       title: "Engenharia Elétrica",
-      description: "Projetos elétricos completos, da concepção à execução, com foco em segurança e eficiência.",
+      description: "Projetos elétricos completos, da concepção à execução, com foco em segurança, NBR 5410 e eficiência.",
     },
     {
+      slug: "automacao",
       icon: Cpu,
-      title: "Automação",
-      description: "Soluções industriais e prediais para otimização de processos e redução de custos.",
+      title: "Automação Industrial",
+      description: "Soluções industriais e prediais, programação de CLPs, IHMs e quadros para otimização de processos.",
     },
     {
+      slug: "mecanica",
       icon: Settings,
       title: "Engenharia Mecânica",
-      description: "Projetos de sistemas mecânicos com foco em durabilidade e eficiência operacional.",
+      description: "Projetos de sistemas mecânicos, PMOC de ar condicionado, laudos NR-12 e estruturas metálicas.",
     },
     {
+      slug: "civil",
       icon: Building2,
       title: "Engenharia Civil",
-      description: "Projetos estruturais, fundações, instalações prediais e infraestrutura.",
+      description: "Projetos estruturais, fundações, compatibilização BIM e laudos de reformas prediais.",
     },
     {
+      slug: "sustentaveis",
       icon: Leaf,
       title: "Soluções Sustentáveis",
-      description: "Projetos com foco em energias renováveis e práticas ecologicamente responsáveis.",
+      description: "Energia solar fotovoltaica, eficiência energética, mercado livre e auditoria tarifária.",
     }
   ];
+
+  const handleCardClick = (slug: string) => {
+    if (onSelectService) {
+      onSelectService(slug);
+    } else {
+      window.location.hash = `#servicos/${slug}`;
+    }
+  };
 
   return (
     <section id="especialidades" className="section-padding bg-white">
@@ -42,7 +59,7 @@ export default function Services() {
           >
             <span className="text-primary-600 font-extrabold uppercase tracking-widest text-sm mb-4 block">Áreas de Atuação</span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6 tracking-tight">Nossos <span className="text-primary-600">Serviços</span></h2>
-            <p className="text-neutral-600 text-lg font-medium">Combinamos rigor técnico e inovação para entregar projetos estruturados de ponta a ponta.</p>
+            <p className="text-neutral-600 text-lg font-medium">Combinamos rigor técnico e inovação para entregar projetos estruturados de ponta a ponta. Clique em um serviço para ver a landing page detalhada.</p>
           </motion.div>
         </div>
 
@@ -54,18 +71,34 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-8 rounded-2xl bg-neutral-50 border border-neutral-100 hover:shadow-2xl hover:shadow-neutral-200 transition-all hover:bg-white"
+              onClick={() => handleCardClick(service.slug)}
+              className="group p-8 rounded-2xl bg-neutral-50 border border-neutral-100 hover:shadow-2xl hover:shadow-neutral-200 transition-all hover:bg-white cursor-pointer flex flex-col justify-between"
             >
-              <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-600 transition-colors">
-                <service.icon className="size-6 text-primary-600 group-hover:text-white transition-colors" />
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center group-hover:bg-primary-600 transition-colors">
+                    <service.icon className="size-6 text-primary-600 group-hover:text-white transition-colors" />
+                  </div>
+                  <span className="text-xs font-bold text-neutral-400 group-hover:text-primary-600 flex items-center gap-1 transition-colors">
+                    Ver Subpágina <ExternalLink className="size-3" />
+                  </span>
+                </div>
+
+                <h3 className="font-display font-extrabold text-xl text-neutral-900 mb-4 group-hover:text-primary-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-neutral-500 font-medium leading-relaxed mb-6">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="font-display font-extrabold text-xl text-neutral-900 mb-4 group-hover:text-primary-600 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-neutral-500 font-medium leading-relaxed mb-6">
-                {service.description}
-              </p>
-              <div className="w-8 h-1 bg-primary-100 rounded-full group-hover:w-full transition-all duration-500"></div>
+
+              <div>
+                <div className="flex items-center gap-2 text-xs font-extrabold text-primary-600 group-hover:translate-x-1 transition-transform mb-4">
+                  <span>Saiba mais e Orçamento</span>
+                  <ArrowRight className="size-4" />
+                </div>
+                <div className="w-8 h-1 bg-primary-100 rounded-full group-hover:w-full transition-all duration-500"></div>
+              </div>
             </motion.div>
           ))}
           
