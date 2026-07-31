@@ -187,16 +187,12 @@ export default function Projects() {
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent group-hover:via-neutral-950/60 transition-all duration-300"></div>
 
-              {/* Top Category Badge */}
-              <div className="absolute top-6 left-6 z-10 flex items-center gap-2">
-                <span className="py-1 px-3 rounded-lg bg-neutral-950/80 backdrop-blur-md text-primary-400 text-xs font-bold uppercase tracking-wider border border-white/10">
+              {/* Top Badges Container */}
+              <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between gap-2 pointer-events-none">
+                <span className="py-1 px-3 rounded-lg bg-neutral-950/80 backdrop-blur-md text-primary-400 text-xs font-bold uppercase tracking-wider border border-white/10 truncate max-w-[65%] shadow-sm">
                   {project.category}
                 </span>
-              </div>
-
-              {/* Location Badge */}
-              <div className="absolute top-6 right-6 z-10">
-                <span className="py-1 px-2.5 rounded-lg bg-neutral-950/80 backdrop-blur-md text-neutral-300 text-xs font-medium border border-white/10 flex items-center gap-1">
+                <span className="py-1 px-2.5 rounded-lg bg-neutral-950/80 backdrop-blur-md text-neutral-300 text-xs font-medium border border-white/10 flex items-center gap-1 shrink-0 shadow-sm">
                   <MapPin className="size-3 text-primary-500" />
                   {project.location.split('/')[0]}
                 </span>
