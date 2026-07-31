@@ -9,7 +9,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       >
         <img
-          src="/fundo.png"
+          src="/fundo.webp"
           alt="Fundo conceitual de engenharia e estrutura metálica - OZM Engenharia"
           className="w-full h-full object-cover opacity-40 object-center"
         />
