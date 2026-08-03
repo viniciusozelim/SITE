@@ -1,4 +1,4 @@
-import { Zap, Cpu, Settings, Building2, Leaf, ArrowRight, ExternalLink } from 'lucide-react';
+import { Zap, Cpu, Settings, Building2, Leaf, FileCheck, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ServicesProps {
@@ -36,6 +36,12 @@ export default function Services({ onSelectService }: ServicesProps) {
       icon: Leaf,
       title: "Soluções Sustentáveis",
       description: "Energia solar fotovoltaica, eficiência energética, mercado livre e auditoria tarifária.",
+    },
+    {
+      slug: "laudos",
+      icon: FileCheck,
+      title: "Laudos e Perícias Técnicas",
+      description: "Laudos, vistorias e perícias técnicas com rigor, imparcialidade e respaldo legal, oferecendo diagnósticos precisos para instalações e equipamentos.",
     }
   ];
 
@@ -107,11 +113,13 @@ export default function Services({ onSelectService }: ServicesProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="p-8 rounded-2xl bg-primary-600 text-white shadow-xl shadow-primary-600/20 md:col-span-2 lg:col-span-1 flex flex-col justify-center"
+            className="p-8 rounded-2xl bg-primary-600 text-white shadow-xl shadow-primary-600/20 md:col-span-2 lg:col-span-3 flex flex-col md:flex-row items-center justify-between gap-6"
           >
-            <h3 className="font-display font-extrabold text-2xl mb-4">Precisa de um Projeto?</h3>
-            <p className="text-sm text-primary-100 mb-8 font-medium">Solicite uma análise preliminar com nossos especialistas hoje mesmo.</p>
-            <a href="#contato" className="flex items-center gap-2 font-bold hover:gap-4 transition-all text-white">
+            <div>
+              <h3 className="font-display font-extrabold text-2xl mb-2">Precisa de um Projeto ou Laudo Técnico?</h3>
+              <p className="text-sm text-primary-100 font-medium">Solicite uma análise preliminar com nossos engenheiros especialistas hoje mesmo.</p>
+            </div>
+            <a href="#contato" className="bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-xl font-extrabold transition-all flex items-center gap-2 shrink-0">
               Fale Conosco <ArrowRight className="size-5" />
             </a>
           </motion.div>

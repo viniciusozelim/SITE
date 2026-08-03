@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Calculator, ChevronDown, Zap, Cpu, Settings, Building2, Leaf } from 'lucide-react';
+import { Menu, X, Calculator, ChevronDown, Zap, Cpu, Settings, Building2, Leaf, FileCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import QuickQuoteModal from './QuickQuoteModal';
 
@@ -28,6 +28,7 @@ export default function Navbar({ onNavigateService, onNavigateHome }: NavbarProp
     { name: 'Engenharia Mecânica', slug: 'mecanica', icon: Settings },
     { name: 'Engenharia Civil', slug: 'civil', icon: Building2 },
     { name: 'Soluções Sustentáveis', slug: 'sustentaveis', icon: Leaf },
+    { name: 'Laudos e Perícias Técnicas', slug: 'laudos', icon: FileCheck },
   ];
 
   const handleServiceClick = (slug: string) => {

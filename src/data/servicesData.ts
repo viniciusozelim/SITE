@@ -501,5 +501,95 @@ export const servicesData: Record<string, ServiceDetail> = {
         answer: "Sim! A OZM Engenharia é responsável por todo o trâmite técnico e documental de homologação até o medidor ser ligado."
       }
     ]
+  },
+  "laudos": {
+    slug: "laudos",
+    title: "Laudos e Perícias Técnicas",
+    category: "Vistorias, Inspeções & Respaldo Legal",
+    icon: FileCheck,
+    heroTag: "Perícias Judiciais, Vistorias & Emissão de ART",
+    heroHeadline: "Laudos e Perícias Técnicas com Rigor, Imparcialidade e Respaldo Legal",
+    heroSubheadline: "Laudos, vistorias e perícias técnicas com rigor, imparcialidade e respaldo legal, oferecendo diagnósticos precisos para instalações, equipamentos e sistemas de engenharia.",
+    creaBadge: "Peritos Cadastrados • Emissão de ART CREA • Respaldo Jurídico",
+    whatsappMessage: "Olá OZM Engenharia! Vim pelo site e preciso de um orçamento para Laudos e Perícias Técnicas.",
+    image: "/champagnat.webp",
+    metrics: [
+      { value: "100%", label: "Conformidade com Normas ABNT e NBR" },
+      { value: "+150", label: "Laudos e Perícias Entregues" },
+      { value: "ART", label: "Anotação de Responsabilidade Técnica Inclusa" },
+      { value: "Jurídico", label: "Validade e Respaldo em Processos Judiciais" }
+    ],
+    painPoints: [
+      {
+        problem: "Notificações, multas ou impedimentos de órgãos fiscalizadores por falta de laudos vigentes.",
+        solution: "Inspeção criteriosa com emissão de laudo técnico oficial assinado por engenheiro habilitado com ART."
+      },
+      {
+        problem: "Dúvidas técnicas e divergências judiciais ou extrajudiciais sobre falhas em instalações ou sinistros.",
+        solution: "Perícia técnica imparcial com laudo pericial fundamentado em evidências e ensaios normatizados."
+      },
+      {
+        problem: "Necessidade de avaliar a segurança e estado de conservação de edificações e máquinas antes de reformas ou compra.",
+        solution: "Vistoria técnica predial e mecânica detalhada com relatório fotográfico e mapeamento de anomalias."
+      }
+    ],
+    deliverables: [
+      {
+        title: "Laudo Pericial Judicial & Extrajudicial",
+        description: "Parecer técnico fundamentado com embasamento nas normas ABNT/NBR para instrução de processos.",
+        icon: ShieldCheck
+      },
+      {
+        title: "Vistoria Técnica & Inspeção Predial",
+        description: "Mapeamento detalhado de patologias, trincas, instalações e estado de conservação de imóveis.",
+        icon: FileCheck
+      },
+      {
+        title: "Laudos de Recebimento de Obras & Reformas",
+        description: "Conferência técnica de execução e entrega de obras conforme especificações de projeto.",
+        icon: Award
+      },
+      {
+        title: "Emissão de ART no CREA-SP",
+        description: "Documentação legal assinada garantindo a responsabilidade técnica do engenheiro perito.",
+        icon: CheckCircle2
+      }
+    ],
+    processSteps: [
+      {
+        step: "01",
+        title: "Solicitação & Alinhamento",
+        description: "Entendimento do objetivo da perícia ou laudo (judicial, extrajudicial, preventivo ou fiscalitário)."
+      },
+      {
+        step: "02",
+        title: "Vistoria In Loco & Ensaios",
+        description: "Inspeção presencial detalhada com registros fotográficos, medições e coleta de dados em campo."
+      },
+      {
+        step: "03",
+        title: "Elaboração do Laudo",
+        description: "Análise norma a norma, diagnósticos de causa raiz e fundamentação técnica dos achados."
+      },
+      {
+        step: "04",
+        title: "Entrega Formal & ART",
+        description: "Emissão e entrega do laudo pericial impresso/digital com ART vinculada junto ao CREA."
+      }
+    ],
+    faqs: [
+      {
+        question: "O que é um Laudo Técnico com ART?",
+        answer: "É um documento emitido por um engenheiro habilitado que atesta as condições de segurança, funcionamento ou regularidade de um sistema ou edificação, acompanhado da Anotação de Responsabilidade Técnica (ART)."
+      },
+      {
+        question: "Qual a diferença entre Vistoria e Perícia Técnica?",
+        answer: "A vistoria é a constatação de fatos e estado das coisas. A perícia envolve a apuração das causas que motivaram determinado evento ou anomalia, com fundamentação científica e normativa."
+      },
+      {
+        question: "Os laudos da OZM Engenharia têm validade jurídica?",
+        answer: "Sim. Nossos laudos são elaborados por engenheiros registrados no CREA e seguem estritamente as diretrizes da ABNT para perícias de engenharia."
+      }
+    ]
   }
 };

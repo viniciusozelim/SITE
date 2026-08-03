@@ -27,7 +27,8 @@ export default function Footer({ onNavigateService, onNavigateHome }: FooterProp
     { label: 'Automação Industrial', slug: 'automacao' },
     { label: 'Engenharia Mecânica', slug: 'mecanica' },
     { label: 'Engenharia Civil', slug: 'civil' },
-    { label: 'Soluções Sustentáveis', slug: 'sustentaveis' }
+    { label: 'Soluções Sustentáveis', slug: 'sustentaveis' },
+    { label: 'Laudos e Perícias Técnicas', slug: 'laudos' }
   ];
 
   const handleServiceClick = (e: React.MouseEvent, slug: string) => {

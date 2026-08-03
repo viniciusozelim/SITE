@@ -218,6 +218,7 @@ export default function QuickQuoteModal({ isOpen, onClose, initialService }: Qui
                     <option value="Projeto Elétrico NBR 5410">Projeto Elétrico (NBR 5410)</option>
                     <option value="Automação Industrial">Automação Industrial & Controle</option>
                     <option value="Engenharia Civil & Estruturas">Engenharia Civil & Projetos Estruturais</option>
+                    <option value="Laudos e Perícias Técnicas">Laudos e Perícias Técnicas</option>
                     <option value="Laudo Técnico & ART">Laudos Técnicos e Emissão de ART</option>
                     <option value="Outros Serviços">Outros Serviços de Engenharia</option>
                   </select>
